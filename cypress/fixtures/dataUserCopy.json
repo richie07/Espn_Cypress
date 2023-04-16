@@ -1,0 +1,6 @@
+{
+    "first_name": "{{User_BD.getFirstName}}",
+    "last_name": "{{User_BD.getLastName}}",
+    "email": "{{User_BD.getEmail}}",
+    "password": "{{User_BD.getPassword}}"
+}
