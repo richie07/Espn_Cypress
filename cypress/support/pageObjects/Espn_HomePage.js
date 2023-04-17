@@ -28,6 +28,8 @@ class Espn_HomePage {
      * Verify visible icoLogin
      */
     _verifyIcoLogin(){
+        //cy.get(this.icoLogin).should('exist').invoke('css','position','static')
+        cy.wait(3000)
         cy.get(this.icoLogin).should('be.visible')
     }
 

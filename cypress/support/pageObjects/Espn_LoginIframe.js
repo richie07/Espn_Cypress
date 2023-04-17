@@ -33,8 +33,7 @@ class Espn_LoginIframe{
      * Create New Account EspnPage
      * @param user User
      */
-    _createAccountAndReturnHome(user){
-        cy.writeJsonFileFromBDUser(user)
+    _createAccountAndReturnHome(){
         cy.fixture("dataUser").then((dataJson)=>{
             cy.log("Create account : "+dataJson.first_name+" "+dataJson.last_name+" "+dataJson.email+ " "+dataJson.password)
             cy.get('@iframe').find(this.txtName).should('be.visible').type(dataJson.first_name)
@@ -60,8 +59,10 @@ class Espn_LoginIframe{
             cy.get('@iframe').find(this.txtUserName).should('be.visible').type(dataJson.email)
             cy.get('@iframe').find(this.txtUserPass).type(dataJson.password)
             cy.get('@iframe').find(this.btnSignUpAccount).click({force:true})
-            cy.wait(1000)
+            
+            cy.get('@iframe').should('not.have.class', 'state-active');
             cy.get('@iframe').find('#loading-indicator').should('not.exist');
+            cy.wait(1000)
         })
     }
 
