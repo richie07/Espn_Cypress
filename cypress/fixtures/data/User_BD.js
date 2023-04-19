@@ -23,4 +23,4 @@ class User_BD {
       return this.password;
     }
   }
-  export default User_BD
+  module.exports = new User_BD()

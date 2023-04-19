@@ -1,6 +1,4 @@
-import Espn_LoginIframe from "./Espn_LoginIframe";
-import 'cypress-wait-until';
-
+require('cypress-wait-until');
 export default class Espn_MenuPage{
     constructor() {
         this.btnLogin = "div.global-user:first-of-type a[data-affiliatename='espn']";
@@ -20,7 +18,6 @@ export default class Espn_MenuPage{
         cy.waitElementVisibleAndClick(this.btnLogin)
         cy.getIframe(this.ifrLogin)
 
-        return new Espn_LoginIframe()
     }
 
     /**
@@ -44,12 +41,12 @@ export default class Espn_MenuPage{
      */
     _goProfileAccount(){
         cy.get(this.btnEspnProfile).click({force:true})
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(1000)
         cy.get(this.menu).parent().should('not.have.css', 'hover')
         cy.getIframe(this.ifrLogin)
-        return new Espn_LoginIframe()
+
     }
 
 }
-
-//export default Espn_MenuPage
+module.exports = new Espn_MenuPage()

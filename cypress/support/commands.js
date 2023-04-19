@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import waitUntil from 'cypress-wait-until';
+const waitUntil = require('cypress-wait-until');
 Cypress.Commands.add('waitUntil', waitUntil);
 
 /**

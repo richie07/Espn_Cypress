@@ -1,0 +1,29 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "cypress/globals": true
+    },
+    "extends": "eslint:recommended",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": ["cypress"],
+    "rules": {
+        "cypress/assertion-before-screenshot": "error",
+        "cypress/no-assigning-return-values": "error",
+        "cypress/no-unnecessary-waiting": "off",
+        "no-restricted-imports": ["error", {
+            "patterns": [
+              {
+                "group": ["*", "!fs", "!path"],
+                "message": "Import statements are not allowed, use require() instead"
+              }
+            ]
+          }]
+
+    }
+}
