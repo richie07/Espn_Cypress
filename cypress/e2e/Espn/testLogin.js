@@ -7,7 +7,6 @@ describe("Test Login Espn",()=>{
       const myTest = new BaseTest();
       
       before(() => {
-        cy.copyOtherJsonFileToJsonFile()  
         myTest.beforeHook();
         cy.clearCookies()
                

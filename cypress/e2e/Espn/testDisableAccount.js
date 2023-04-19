@@ -7,7 +7,6 @@ describe("Test Disable Account",()=>{
       const myTest = new BaseTest();
       
       before(() => {
-        cy.copyOtherJsonFileToJsonFile()
         myTest.beforeHook();
         cy.clearCookies()  
              
@@ -22,7 +21,6 @@ describe("Test Disable Account",()=>{
       })
 
       it('Validate create account', () => {
-        const user = new User_BD()
         const menu = myTest.homePage._goMenuLogin()
         const loginIframe = menu._goLoginIframe()
         loginIframe._goSignUp()

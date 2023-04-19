@@ -74,25 +74,15 @@ Cypress.Commands.add("getIframe", (iframe) => {
  * @param user User
 */
 Cypress.Commands.add("writeJsonFileFromBDUser", (user) => {
-  cy.readFile("cypress/fixtures/dataUser.json").then((file) => {
-    //const data = JSON.parse(JSON.stringify(file))
-    const data = JSON.stringify(file)
-      .replace('{{User_BD.getFirstName}}', user.getFirstName())
-      .replace('{{User_BD.getLastName}}', user.getLastName())
-      .replace('{{User_BD.getEmail}}', user.getEmail())
-      .replace('{{User_BD.getPassword}}', user.getPassword())
+  cy.readFile("cypress/fixtures/dataUser.json").then((data) => {
+    data.firstName = user.getFirstName();
+    data.lastName = user.getLastName();
+    data.password = user.getPassword();
+    data.email = user.getEmail();    
+    
     cy.writeFile('cypress/fixtures/dataUser.json', data)
   })
 })
 
-/**
- * * Copy json file "dataUserCopy" to "dataUser"
-*/
-Cypress.Commands.add("copyOtherJsonFileToJsonFile", () => {
-  cy.readFile("cypress/fixtures/dataUserCopy.json").then((file) => {
-    cy.exec('cp cypress/fixtures/dataUserCopy.json cypress/fixtures/dataUser.json')
-
-  })
-})
 
 
